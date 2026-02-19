@@ -1,8 +1,10 @@
 [Program-1 WAP to add two numbers](#assi-1)
 
 [Program-2 WAP to add two objects](#assi-2)
-~~~
+
 ## assi-1
+~~~
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -50,10 +52,11 @@ class AddNumbers {
 }
 ~~~
 <img width="601" height="236" alt="image" src="https://github.com/user-attachments/assets/9f3e6650-2fab-43f2-ba45-147b8d43016c" />
-## assi-1
 
-~~~
+
 ## assi-2
+~~~
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
