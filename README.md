@@ -1,6 +1,18 @@
-[Program-1 WAP to add two numbers](#assi-1)
+[Program-1 WAP to add two numbers.](#assi-1)
 
-[Program-2 WAP to add two objects](#assi-2)
+[Program-2 Write a class for addition of two distances where each distance is given in km, cm, mm.](#assi-2)
+
+[Program-3 Write a class for addition, subtraction, multiplication, division using object and classes Test the result by creation of objects in main class.](#assi-3)
+
+[Program-4 Write a class for addition of two distances where each distance is given in meter and centimeters.  Test the result by creation of objects in main class.](#assi-4)
+
+[Program-5 Write a class for addition of two times where each time is given in hour, minute and seconds. Test the result by creation of objects in main class.](#assi-5)
+
+[Program-6 Collect the code from internet for any 5 programs of C language. Eg: factorial, palindrone, fibonacci, armstrong, pyramind of stars. create functions in single class](#assi-6)
+
+[Program-7 Write a class that is having 4 methods for 1 dimensional array input, output original, output reverse, reverse.](#assi-7)
+
+[Program-8 Write a class with multiple methods to perform matrix operations(Transpose, addition, sum of rows, sum of columns, sum of diagonals) on 3*3 matrix.](#assi-8)
 
 ## assi-1
 ~~~
