@@ -14,6 +14,11 @@
 
 [Program-8 Write a class with multiple methods to perform matrix operations(Transpose, addition, sum of rows, sum of columns, sum of diagonals) on 3*3 matrix.](#assi-8)
 
+[Program-9 Write a program using 3 classes to print 1 to 10, 1 to 10, 1 to 10, with and without thread and analze the output and repeat the same program using Runnable interface.](#assi-9)
+
+[Program-10 Write a program using the concept of multithreading the output of all 3 threads must be synchronized(use join method for that).](#assi-10)
+
+
 ## assi-1
 ~~~
 
@@ -557,5 +562,137 @@ public class Program8 {
 }
 ~~~
 <img width="1668" height="880" alt="image" src="https://github.com/user-attachments/assets/969beb32-13a4-48db-91b1-ab5984d50de3" />
+
+## assi-9
+~~~
+class ClassA {
+    public void printName() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("ClassA "+i);
+        }
+    }
+}
+class ClassB {
+    public void printName() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("ClassB "+i);
+        }
+    }
+}
+class ClassC {
+    public void printName() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("ClassC "+i);
+        }
+    }
+}
+public class Tanvi_B1 {
+
+    public static void main(String[] args) {
+        ClassA a = new ClassA();
+        ClassB b = new ClassB();
+        ClassC c = new ClassC();
+
+        a.printName();
+        b.printName();
+        c.printName();
+    }
+}
+~~~
+<img width="770" height="593" alt="image" src="https://github.com/user-attachments/assets/32cb4648-302b-4ade-bac4-95f681332405" />
+
+class ClassA_th extends Thread{
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("ClassA "+i);
+        }
+    }
+}
+class ClassB_th extends Thread{
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("ClassB "+i);
+        }
+    }
+}
+class ClassC_th extends Thread{
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("ClassC "+i);
+        }
+    }
+}
+public class Tanvi_B1_Thread {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        ClassA_th a = new ClassA_th();
+        ClassB_th b = new ClassB_th();
+        ClassC_th  c = new ClassC_th();
+
+        a.start();
+        b.start();
+        c.start();
+    }
+    
+}
+
+<img width="864" height="554" alt="image" src="https://github.com/user-attachments/assets/91624d7b-7a26-4d51-a734-97fdc6dfbcd0" />
+
+class ClassA_thi implements Runnable{
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("ClassA "+i);
+        }
+    }
+}
+class ClassB_thi implements Runnable{
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("ClassB "+i);
+        }
+    }
+}
+class ClassC_thi implements Runnable{
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            System.out.println("ClassC "+i);
+        }
+    }
+}
+public class Tanvi_B1_Runable {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        ClassA_thi a = new ClassA_thi();
+        Thread th1= new Thread(a);
+        ClassB_thi b = new ClassB_thi();
+        Thread th2= new Thread(b);
+        ClassC_thi c = new ClassC_thi();
+        Thread th3= new Thread(c);
+        th1.start();
+        th2.start();
+        th3.start();
+    }
+    
+}
+
+<img width="1033" height="560" alt="image" src="https://github.com/user-attachments/assets/6ff0731f-4166-49eb-b73b-114c3f297c3c" />
+
+
+
+
 
 
