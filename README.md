@@ -601,6 +601,7 @@ public class Tanvi_B1 {
 ~~~
 <img width="770" height="593" alt="image" src="https://github.com/user-attachments/assets/32cb4648-302b-4ade-bac4-95f681332405" />
 
+~~~
 class ClassA_th extends Thread{
     @Override
     public void run() {
@@ -642,9 +643,10 @@ public class Tanvi_B1_Thread {
     }
     
 }
-
+~~~
 <img width="864" height="554" alt="image" src="https://github.com/user-attachments/assets/91624d7b-7a26-4d51-a734-97fdc6dfbcd0" />
 
+~~~
 class ClassA_thi implements Runnable{
     @Override
     public void run() {
@@ -688,7 +690,7 @@ public class Tanvi_B1_Runable {
     }
     
 }
-
+~~~
 <img width="1033" height="560" alt="image" src="https://github.com/user-attachments/assets/6ff0731f-4166-49eb-b73b-114c3f297c3c" />
 
 
