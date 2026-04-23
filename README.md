@@ -18,6 +18,15 @@
 
 [Program-10 Write a program using the concept of multithreading the output of all 3 threads must be synchronized(use join method for that).](#assi-10)
 
+[Program-11 Write a program to demonstrate Java collection Framewrok List).](#assi-11)
+
+[Program-12 Write a program to demonstrate Java collection Framewrok Linked List).](#assi-12)
+
+[Program-11 Write a program to demonstrate Java collection Framewrok Stack).](#assi-13)
+
+[Program-11 Write a program to demonstrate Java collection Framewrok Hashmap).](#assi-14)
+
+[Program-11 Write a program to demonstrate Java collection Framewrok Queue).](#assi-15)
 
 ## assi-1
 ~~~
@@ -693,8 +702,200 @@ public class Tanvi_B1_Runable {
 ~~~
 <img width="1033" height="560" alt="image" src="https://github.com/user-attachments/assets/6ff0731f-4166-49eb-b73b-114c3f297c3c" />
 
+## assi-11
+~~~
+import java.util.*;
+public class List_Interface {
+    public static void main(String[] args) {
+        // TODO code application logic here
+        List<String> list = new ArrayList<>();
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Mango");
+        
+        for(String fruit : list){
+            System.out.println(fruit);
+        }  
+        
+        list.add(1,"orange");
+        System.out.println("Element at index 1 after modifying : " + list.get(1));
+        
+        list.set(0,"grapes");
+        
+        list.remove("Banana");
+        
+        System.out.println("sise: " + list.size());
+        
+    }
+}
+~~~
+<img width="678" height="352" alt="image" src="https://github.com/user-attachments/assets/d0d0ea16-36b9-4571-8925-68e21c62a679" />
 
+## assi-12
+~~~
+import java.util.LinkedList;
 
+public class LinkedListDemo {
+    public static void main(String[] args) {
 
+        // Create a LinkedList
+        LinkedList<String> list = new LinkedList<>();
 
+        
+        list.add("Apple");
+        list.add("Banana");
+        list.add("Cherry");
 
+        
+        list.addFirst("Mango");
+        list.addLast("Orange");
+
+        System.out.println("List: " + list);
+
+        
+        System.out.println("First element: " + list.getFirst());
+        System.out.println("Last element: " + list.getLast());
+        System.out.println("Element at index 2: " + list.get(2));
+
+        
+        list.set(1, "Pineapple");
+        System.out.println("After update: " + list);
+
+        
+        list.remove("Cherry");
+        list.removeFirst();
+        list.removeLast();
+
+        System.out.println("After removals: " + list);
+
+        
+        System.out.println("Contains Banana? " + list.contains("Banana"));
+
+       
+        System.out.println("Size: " + list.size());
+
+       
+        System.out.println("Iterating:");
+        for (String item : list) {
+            System.out.println(item);
+        }
+    }
+}
+~~~
+<img width="622" height="263" alt="image" src="https://github.com/user-attachments/assets/f15a7ecd-a56d-42a3-8ce4-6bfe5b812ec5" />
+
+## assi-13
+~~~
+import java.util.Stack;
+
+public class StackDemo {
+    public static void main(String[] args) {
+
+        // Create a Stack
+        Stack<Integer> stack = new Stack<>();
+
+        // Push elements
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        System.out.println("Stack: " + stack);
+
+        // Peek (top element)
+        System.out.println("Top element: " + stack.peek());
+
+        // Pop (remove top)
+        System.out.println("Popped: " + stack.pop());
+
+        System.out.println("Stack after pop: " + stack);
+
+        // Check if empty
+        System.out.println("Is empty? " + stack.isEmpty());
+
+        // Search element
+        System.out.println("Position of 10: " + stack.search(10));
+    }
+}
+~~~
+<img width="617" height="230" alt="image" src="https://github.com/user-attachments/assets/570fcaa5-647a-4a00-8a54-c5062d67f614" />
+
+## assi-14
+~~~
+import java.util.HashMap;
+
+public class HashMapDemo {
+    public static void main(String[] args) {
+
+        // Create a HashMap
+        HashMap<Integer, String> map = new HashMap<>();
+
+        // Put elements (key, value)
+        map.put(1, "Apple");
+        map.put(2, "Banana");
+        map.put(3, "Cherry");
+
+        System.out.println("Map: " + map);
+
+        // Access value
+        System.out.println("Key 2 value: " + map.get(2));
+
+        // Update value
+        map.put(2, "Mango");
+        System.out.println("After update: " + map);
+
+        // Remove element
+        map.remove(3);
+        System.out.println("After removal: " + map);
+
+        // Check key/value
+        System.out.println("Contains key 1? " + map.containsKey(1));
+        System.out.println("Contains value Apple? " + map.containsValue("Apple"));
+
+        // Size
+        System.out.println("Size: " + map.size());
+
+        // Iterate
+        System.out.println("Iterating:");
+        for (Integer key : map.keySet()) {
+            System.out.println(key + " -> " + map.get(key));
+        }
+    }
+}
+~~~
+<img width="586" height="355" alt="image" src="https://github.com/user-attachments/assets/77b5cee3-7fdc-4123-bdb0-33aea71a858d" />
+
+## assi-15
+~~~
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class QueueDemo {
+    public static void main(String[] args) {
+
+        // Create Queue
+        Queue<Integer> queue = new LinkedList<>();
+
+        // Add elements
+        queue.add(10);
+        queue.add(20);
+        queue.add(30);
+
+        System.out.println("Queue: " + queue);
+
+        // Access head
+        System.out.println("Head (peek): " + queue.peek());
+
+        // Remove element
+        System.out.println("Removed: " + queue.poll());
+
+        System.out.println("Queue after removal: " + queue);
+
+        // Check empty
+        System.out.println("Is empty? " + queue.isEmpty());
+
+        // Size
+        System.out.println("Size: " + queue.size());
+    }
+}
+~~~
+<img width="604" height="158" alt="image" src="https://github.com/user-attachments/assets/4ff7881c-75c9-4c6e-b194-f34ae4beb5ab" />
