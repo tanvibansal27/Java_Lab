@@ -28,7 +28,32 @@
 
 [Program-15 Write a program to demonstrate Java collection Framewrok Queue).](#assi-15)
 
-[Program-16 ).](#assi-15)
+[Program-16 Addition of 2 numbers using swing.](#assi-16)
+
+[Program-17 Make a registration form with 10 elements and send the data into database (use jdbc connectivity)](#assi-17)
+
+[Program-18 Make one calculator in swing.](#assi-18)
+
+[Program-19 Matrix Addition using swing class.](#assi-19)
+
+[Program-20 Create one jframe apply 10 buttons on that after clicking on each button a new
+structure is created.(Circle, oval rectangle, etc ....) ](#assi-20)
+
+[Program-21 Just using mouse Event create a frame like paint brush with selection of colour and width.](#assi-21)
+
+[Program-22 Create a package of any 5 classes of your choice and import it.](#assi-22)
+
+[Program-23 Create one package and sub package  import and test it .](#assi-23)
+
+[Program-24 Create one small array of size 5 apply array out of bounds exception using try catch give a proper message in catch and demonstrate the exception exactly in the same fashion demonstrate arithmetic exception .](#assi-24)
+
+[Program-25 To test the range of age of one student.write a program using user defined exception.
+](#assi-25)
+
+[Program-26 File Handling Programs (given in the PPT)](#assi-26)
+
+[Program-27 Inheritance Programs, using interface and abstract classes.](#assi-27)
+
 
 ## assi-1
 ~~~
@@ -704,6 +729,56 @@ public class Tanvi_B1_Runable {
 ~~~
 <img width="1033" height="560" alt="image" src="https://github.com/user-attachments/assets/6ff0731f-4166-49eb-b73b-114c3f297c3c" />
 
+## assi-10
+~~~
+class MyThread extends Thread {
+    private String threadName;
+
+    MyThread(String name) {
+        threadName = name;
+    }
+
+    public void run() {
+        for (int i = 1; i <= 3; i++) {
+            System.out.println(threadName + " is running: " + i);
+            try {
+                Thread.sleep(500); // just to slow down output
+            } catch (InterruptedException e) {
+                System.out.println(e);
+            }
+        }
+        System.out.println(threadName + " finished.");
+    }
+}
+
+public class MultiThreadJoinExample {
+    public static void main(String[] args) {
+
+        MyThread t1 = new MyThread("Thread 1");
+        MyThread t2 = new MyThread("Thread 2");
+        MyThread t3 = new MyThread("Thread 3");
+
+        try {
+            t1.start();
+            t1.join(); // wait for t1 to finish
+
+            t2.start();
+            t2.join(); // wait for t2 to finish
+
+            t3.start();
+            t3.join(); // wait for t3 to finish
+
+        } catch (InterruptedException e) {
+            System.out.println(e);
+        }
+
+        System.out.println("All threads have finished execution.");
+    }
+}
+~~~
+<img width="1592" height="812" alt="image" src="https://github.com/user-attachments/assets/768f2104-c832-448c-9240-2b5b404d4548" />
+
+
 ## assi-11
 ~~~
 import java.util.*;
@@ -901,3 +976,513 @@ public class QueueDemo {
 }
 ~~~
 <img width="604" height="158" alt="image" src="https://github.com/user-attachments/assets/4ff7881c-75c9-4c6e-b194-f34ae4beb5ab" />
+
+## assi-16
+~~~
+import javax.swing.*;
+import java.awt.event.*;
+
+public class AdditionSwing {
+    public static void main(String[] args) {
+
+        // Create frame
+        JFrame frame = new JFrame("Addition Calculator");
+        frame.setSize(300, 200);
+        frame.setLayout(null);
+
+        // Labels
+        JLabel l1 = new JLabel("Enter Number 1:");
+        l1.setBounds(20, 20, 120, 25);
+        frame.add(l1);
+
+        JLabel l2 = new JLabel("Enter Number 2:");
+        l2.setBounds(20, 60, 120, 25);
+        frame.add(l2);
+
+        JLabel resultLabel = new JLabel("Result:");
+        resultLabel.setBounds(20, 140, 200, 25);
+        frame.add(resultLabel);
+
+        // Text fields
+        JTextField t1 = new JTextField();
+        t1.setBounds(150, 20, 100, 25);
+        frame.add(t1);
+
+        JTextField t2 = new JTextField();
+        t2.setBounds(150, 60, 100, 25);
+        frame.add(t2);
+
+        // Button
+        JButton btn = new JButton("Add");
+        btn.setBounds(90, 100, 100, 30);
+        frame.add(btn);
+
+        // Action Listener
+        btn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int num1 = Integer.parseInt(t1.getText());
+                    int num2 = Integer.parseInt(t2.getText());
+                    int sum = num1 + num2;
+
+                    resultLabel.setText("Result: " + sum);
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(frame, "Please enter valid numbers!");
+                }
+            }
+        });
+
+        // Frame settings
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
+    }
+}
+~~~
+<img width="881" height="577" alt="image" src="https://github.com/user-attachments/assets/b9fcc653-004b-4b58-9481-b554a021a64e" />
+
+## assi-17
+~~~
+import javax.swing.*;
+import java.awt.event.*;
+import java.sql.*;
+
+public class RegistrationForm {
+    public static void main(String[] args) {
+        JFrame f = new JFrame("Registration");
+
+        JTextField name = new JTextField();
+        JTextField email = new JTextField();
+        JPasswordField pass = new JPasswordField();
+        JButton submit = new JButton("Submit");
+
+        name.setBounds(100, 30, 150, 25);
+        email.setBounds(100, 70, 150, 25);
+        pass.setBounds(100, 110, 150, 25);
+        submit.setBounds(100, 150, 100, 30);
+
+        f.add(new JLabel("Name")).setBounds(20, 30, 80, 25);
+        f.add(new JLabel("Email")).setBounds(20, 70, 80, 25);
+        f.add(new JLabel("Password")).setBounds(20, 110, 80, 25);
+
+        f.add(name); f.add(email); f.add(pass); f.add(submit);
+
+        submit.addActionListener(e -> {
+            try {
+                Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/test", "root", "password");
+
+                PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO users VALUES (?, ?, ?)");
+
+                ps.setString(1, name.getText());
+                ps.setString(2, email.getText());
+                ps.setString(3, new String(pass.getPassword()));
+
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(f, "Data Inserted!");
+
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        });
+
+        f.setSize(300, 250);
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+}
+~~~
+<img width="379" height="314" alt="image" src="https://github.com/user-attachments/assets/ae929320-5685-4f00-a9b6-2a4652809964" />
+
+## assi-18
+~~~
+import javax.swing.*;
+import java.awt.event.*;
+
+public class Calculator {
+    public static void main(String[] args) {
+        JFrame f = new JFrame("Calculator");
+
+        JTextField t1 = new JTextField();
+        JTextField t2 = new JTextField();
+        JLabel result = new JLabel("Result:");
+
+        JButton add = new JButton("+");
+        JButton sub = new JButton("-");
+
+        t1.setBounds(50, 30, 100, 30);
+        t2.setBounds(50, 70, 100, 30);
+        add.setBounds(30, 110, 50, 30);
+        sub.setBounds(100, 110, 50, 30);
+        result.setBounds(50, 150, 150, 30);
+
+        add.addActionListener(e -> {
+            int a = Integer.parseInt(t1.getText());
+            int b = Integer.parseInt(t2.getText());
+            result.setText("Result: " + (a + b));
+        });
+
+        sub.addActionListener(e -> {
+            int a = Integer.parseInt(t1.getText());
+            int b = Integer.parseInt(t2.getText());
+            result.setText("Result: " + (a - b));
+        });
+
+        f.add(t1); f.add(t2); f.add(add); f.add(sub); f.add(result);
+        f.setSize(250, 250);
+        f.setLayout(null);
+        f.setVisible(true);
+    }
+}
+~~~
+<img width="379" height="314" alt="image" src="https://github.com/user-attachments/assets/e20fe662-2ad0-4dcc-9e88-a3969b6013e0" />
+<img width="379" height="314" alt="image" src="https://github.com/user-attachments/assets/9de77d37-b62c-4506-8c98-f946b69ef137" />
+
+## assi-19
+~~~
+import javax.swing.*;
+import java.awt.event.*;
+
+// Class for Matrix Logic
+class Matrix {
+    int[][] A = new int[2][2];
+    int[][] B = new int[2][2];
+    int[][] C = new int[2][2];
+
+    // Method to add matrices
+    public void add() {
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                C[i][j] = A[i][j] + B[i][j];
+            }
+        }
+    }
+}
+
+// GUI Class
+class MatrixGUI extends JFrame implements ActionListener {
+
+    JTextField[][] aField = new JTextField[2][2];
+    JTextField[][] bField = new JTextField[2][2];
+    JTextField[][] resultField = new JTextField[2][2];
+
+    JButton addBtn;
+    Matrix m = new Matrix();
+
+    MatrixGUI() {
+        setTitle("Matrix Addition");
+        setSize(400, 400);
+        setLayout(null);
+
+        int x = 30, y = 30;
+
+        // Matrix A input
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                aField[i][j] = new JTextField();
+                aField[i][j].setBounds(x + j * 40, y + i * 40, 35, 35);
+                add(aField[i][j]);
+            }
+        }
+
+        // Matrix B input
+        x = 150;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                bField[i][j] = new JTextField();
+                bField[i][j].setBounds(x + j * 40, y + i * 40, 35, 35);
+                add(bField[i][j]);
+            }
+        }
+
+        // Result Matrix
+        x = 270;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
+                resultField[i][j] = new JTextField();
+                resultField[i][j].setBounds(x + j * 40, y + i * 40, 35, 35);
+                resultField[i][j].setEditable(false);
+                add(resultField[i][j]);
+            }
+        }
+
+        // Button
+        addBtn = new JButton("Add");
+        addBtn.setBounds(150, 150, 80, 30);
+        add(addBtn);
+
+        addBtn.addActionListener(this);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        try {
+            // Take input
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    m.A[i][j] = Integer.parseInt(aField[i][j].getText());
+                    m.B[i][j] = Integer.parseInt(bField[i][j].getText());
+                }
+            }
+
+            // Perform addition
+            m.add();
+
+            // Show result
+            for (int i = 0; i < 2; i++) {
+                for (int j = 0; j < 2; j++) {
+                    resultField[i][j].setText(String.valueOf(m.C[i][j]));
+                }
+            }
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Enter valid numbers!");
+        }
+    }
+}
+
+// Main Class
+public class MatrixAdditionApp {
+    public static void main(String[] args) {
+        new MatrixGUI();
+    }
+}
+~~~
+<img width="403" height="404" alt="image" src="https://github.com/user-attachments/assets/a9e6c6e6-84c8-493f-85fc-24f480a00ee6" />
+
+## assi-20
+~~~
+import javax.swing.*;
+import java.awt.*;
+
+public class Shapes extends JPanel {
+    String shape = "";
+
+    public void paint(Graphics g) {
+        super.paint(g);
+        if(shape.equals("circle")) g.drawOval(100,100,50,50);
+        if(shape.equals("rect")) g.drawRect(100,100,80,50);
+    }
+
+    public static void main(String[] args) {
+        JFrame f = new JFrame();
+        Shapes s = new Shapes();
+
+        JButton b1 = new JButton("Circle");
+        JButton b2 = new JButton("Rectangle");
+
+        b1.addActionListener(e -> { s.shape="circle"; s.repaint(); });
+        b2.addActionListener(e -> { s.shape="rect"; s.repaint(); });
+
+        f.add(b1, BorderLayout.NORTH);
+        f.add(b2, BorderLayout.SOUTH);
+        f.add(s);
+
+        f.setSize(400,400);
+        f.setVisible(true);
+    }
+}
+~~~
+<img width="403" height="404" alt="image" src="https://github.com/user-attachments/assets/34567b4c-c3e2-45a6-bbf6-015413fca50a" />
+
+<img width="403" height="404" alt="image" src="https://github.com/user-attachments/assets/88a6ad4d-acef-4d6e-b846-0b983be79dbf" />
+
+## assi-21
+~~~
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class PaintApp extends JFrame {
+    int x,y;
+
+    public PaintApp() {
+        addMouseMotionListener(new MouseMotionAdapter() {
+            public void mouseDragged(MouseEvent e) {
+                x = e.getX();
+                y = e.getY();
+                repaint();
+            }
+        });
+
+        setSize(400,400);
+        setVisible(true);
+    }
+
+    public void paint(Graphics g) {
+        g.fillOval(x, y, 5, 5);
+    }
+
+    public static void main(String[] args) {
+        new PaintApp();
+    }
+}
+~~~
+<img width="403" height="404" alt="image" src="https://github.com/user-attachments/assets/39d4cd1f-9caa-42d1-a323-a52998616a60" />
+
+## assi-22
+~~~
+package mypack;
+1.A.java
+package mypack;
+
+public class A {
+    public void showA() {
+        System.out.println("This is Class A");
+    }
+}
+2.B.java
+package mypack;
+
+public class B {
+    public void showB() {
+        System.out.println("This is Class B");
+    }
+}
+3 C.java
+package mypack;
+
+public class C {
+    public void showC() {
+        System.out.println("This is Class C");
+    }
+}
+4 D.java
+package mypack;
+
+public class D {
+    public void showD() {
+        System.out.println("This is Class D");
+    }
+}
+5 E.java
+package mypack;
+
+public class E {
+    public void showE() {
+        System.out.println("This is Class E");
+    }
+}
+6 main file
+import mypack.*;
+
+public class TestPackage {
+    public static void main(String[] args) {
+
+        A a = new A();
+        B b = new B();
+        C c = new C();
+        D d = new D();
+        E e = new E();
+
+        a.showA();
+        b.showB();
+        c.showC();
+        d.showD();
+        e.showE();
+    }
+}
+~~~
+
+## assi-23
+~~~
+package pack.subpack;
+public class Test {
+    public void show(){ System.out.println("Subpackage"); }
+}
+~~~
+
+## assi-24
+~~~
+public class ExceptionDemo {
+    public static void main(String[] args) {
+
+        int[] arr = new int[5];
+
+        try {
+            arr[10] = 5;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Array index out of bounds!");
+        }
+
+        try {
+            int a = 10/0;
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero!");
+        }
+    }
+}
+~~~
+<img width="1232" height="504" alt="image" src="https://github.com/user-attachments/assets/0a06f981-a710-4ee4-a0b7-30b5e7beaec1" />
+
+## assi-25
+~~~
+class InvalidAgeException extends Exception {
+    InvalidAgeException(String msg){
+        super(msg);
+    }
+}
+
+public class AgeTest {
+    static void checkAge(int age) throws InvalidAgeException {
+        if(age < 18)
+            throw new InvalidAgeException("Age must be 18+");
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(15);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+}
+~~~
+<img width="1232" height="504" alt="image" src="https://github.com/user-attachments/assets/2128e0ef-d377-43dc-afed-9c39389a88f4" />
+
+## assi-26
+~~~
+import java.io.*;
+
+public class FileDemo {
+    public static void main(String[] args) throws Exception {
+        FileWriter fw = new FileWriter("test.txt");
+        fw.write("Hello Java");
+        fw.close();
+
+        FileReader fr = new FileReader("test.txt");
+        int i;
+        while((i=fr.read())!=-1)
+            System.out.print((char)i);
+    }
+}
+~~~
+<img width="1232" height="504" alt="image" src="https://github.com/user-attachments/assets/3ef54ed6-46bc-470f-9f0c-bcd5fa474eba" />
+
+## assi-27
+~~~
+abstract class Animal {
+    abstract void sound();
+}
+
+interface Run {
+    void run();
+}
+
+class Dog extends Animal implements Run {
+    void sound() { System.out.println("Bark"); }
+    public void run() { System.out.println("Running"); }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.sound();
+        d.run();
+    }
+}
+~~~
+<img width="1232" height="504" alt="image" src="https://github.com/user-attachments/assets/22c55b88-608f-4a13-af0e-5cfa6020ac55" />
+
